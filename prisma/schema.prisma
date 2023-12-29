@@ -10,25 +10,25 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+
 model User {
   id        String   @id @default(uuid())
   profileImageURL String? @map("profile_image_url")
-  email     String?   @unique
+  email     String   @unique
   firstName  String?  @map("first_name")
   lastName  String?  @map("last_name")
   password  String
   salt      String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  posts     Post[]
-
+  posts     Post[]  
   @@map("users")
 } 
 
 model Post {
   id        String   @id @default(uuid())
   title     String
-  content   String?
+  content   String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   author    User     @relation(fields: [authorId], references: [id])
@@ -36,6 +36,4 @@ model Post {
 
   @@map("posts")
 }
-
-
 
