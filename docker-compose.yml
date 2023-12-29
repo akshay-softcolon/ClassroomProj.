@@ -2,12 +2,15 @@ version: '3.4'
 services:
   postgres:
     container_name: graphql-postgres
-    image: postgres:11.1-alpine
+    image: postgres
     ports:
       - 5432:5432
     volumes:
-      - ./postgres-data:/var/lib/postgresql/data
+      - postgres-data:/var/lib/postgresql/data
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: akshay
       POSTGRES_DB: graphql
+
+volumes:
+  postgres-data: 
