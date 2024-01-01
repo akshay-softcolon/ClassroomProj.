@@ -19,7 +19,7 @@ const server = new ApolloServer({
       ...User.resolvers.queries,
     },  
     Mutation: {
-      // ...User.resolvers.mutations,
+      ...User.resolvers.mutations,
     },
   },
 });
